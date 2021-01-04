@@ -7,8 +7,6 @@ import {
 
 import { useAuth } from '../hooks/auth';
 
-// import { Container } from './styles';
-
 interface RouteProps extends ReactDOMRouteProps {
   isPrivate?: boolean;
   component: React.ComponentType;
@@ -31,7 +29,7 @@ const Route: React.FC<RouteProps> = ({
           <Redirect
             to={{
               pathname: isPrivate ? '/' : '/dashboard',
-              state: { from: location },
+              state: { from: location.pathname },
             }}
           />
         );

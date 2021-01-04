@@ -1,3 +1,4 @@
+/* eslint camelcase: off */
 import React, { createContext, useCallback, useContext, useState } from 'react';
 import api from '../services/api';
 
@@ -6,15 +7,21 @@ interface SignInCredentials {
   password: string;
 }
 
+interface User {
+  id: string;
+  name: string;
+  avatar_url: string;
+}
+
 interface AuthContextData {
-  user: object;
+  user: User;
   signIn(credentials: SignInCredentials): Promise<void>;
   singOut(): void;
 }
 
 interface AuthState {
   token: string;
-  user: object;
+  user: User;
 }
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
@@ -24,6 +31,7 @@ const AuthProvider: React.FC = ({ children }) => {
     const token = localStorage.getItem('@GoBarber:token');
     const user = localStorage.getItem('@GoBarber:user');
     if (token && user) {
+      api.defaults.headers.authorization = `Bearer ${token}`;
       return { token, user: JSON.parse(user) };
     }
 
@@ -37,6 +45,7 @@ const AuthProvider: React.FC = ({ children }) => {
     });
     const { user, token } = response.data;
 
+    api.defaults.headers.authorization = `Bearer ${token}`;
     localStorage.setItem('@GoBarber:token', token);
     localStorage.setItem('@GoBarber:user', JSON.stringify(user));
 
