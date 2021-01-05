@@ -54,10 +54,13 @@ export const Profile = styled.div`
       font-weight: 400;
     }
     }
-    strong {
+    a {
+      text-decoration: none;
       color: #ff9000;
-      font-family: 'Roboto Slab', serif;
-      font-weight: 500;
+
+      &:hover {
+        opacity: 0.8;
+      }
     }
   }
 `;

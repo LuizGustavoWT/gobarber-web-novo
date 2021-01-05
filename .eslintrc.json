@@ -35,7 +35,14 @@
         "import/prefer-default-export": "off",
         "camelcase": [2, {"properties": "always"}],
         "import/no-duplicates": "off",
-        "@typescript-eslint/ban-types": "off",
+        "@typescript-eslint/ban-types": ["off", {
+          "types": {
+              "a": null,
+              "A": null,
+              "object": null,
+              "Object": null
+           }
+        }],
         "import/extensions": [
             "error",
             "ignorePackages",

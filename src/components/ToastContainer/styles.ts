@@ -1,9 +1,4 @@
-import styled, { css } from 'styled-components';
-
-interface ToastProps {
-  type?: 'success' | 'info' | 'error';
-  hasDescription: boolean;
-}
+import styled from 'styled-components';
 
 export const Container = styled.div`
   position: absolute;

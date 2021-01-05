@@ -5,13 +5,14 @@ import {
   FiInfo,
   FiXCircle,
 } from 'react-icons/fi';
+import { AnimatedValue, ForwardedProps } from 'react-spring';
 import { ToastMessage, useToast } from '../../../hooks/toast';
 
 import { Container } from './styles';
 
 interface ToastProps {
   message: ToastMessage;
-  style: object;
+  style: AnimatedValue<ForwardedProps<object>>;
 }
 
 const icons = {
@@ -31,7 +32,7 @@ const Toast: React.FC<ToastProps> = ({ message, style }) => {
     return () => {
       clearTimeout(timer);
     };
-  }, [message.id]);
+  }, [removeToast, message.id]);
 
   return (
     <Container
