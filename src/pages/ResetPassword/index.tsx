@@ -1,3 +1,4 @@
+/* eslint camelcase: off */
 import React, { useCallback, useRef } from 'react';
 import { FiLock } from 'react-icons/fi';
 import { Form } from '@unform/web';
